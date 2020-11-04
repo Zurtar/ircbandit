@@ -16,6 +16,8 @@ public class Main {
 
     public static PircBotX bot;
     public static MyListener listener = new MyListener();
+    
+    final static String CHANNEL_NAME="#bookz";
 
     public static void main(String[] args) throws Exception {
         //Configure what we want our bot to do
@@ -23,13 +25,13 @@ public class Main {
                 .setName("LilTar") //Set the nick of the bot. 
                 .setLogin("Zurtar")
                 .addServer("irc.undernet.org") //Join the  network
-                .addAutoJoinChannel("#bookz") //Join the  channel
+                .addAutoJoinChannel(CHANNEL_NAME) //Join the  channel
                 .addListener(listener) //Add our listener that will be called on Events
                 .buildConfiguration();
 
         //Create our bot with the configuration
         bot = new PircBotX(config);
-//        new InputListener().run();
+
         //This method is stopping
         bot.startBot();
 

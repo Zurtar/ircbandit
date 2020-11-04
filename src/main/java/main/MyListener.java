@@ -21,6 +21,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.ServerResponseEvent;
 import org.pircbotx.hooks.types.GenericMessageEvent;
 
+
 public class MyListener extends ListenerAdapter {
 
     @Override
@@ -33,7 +34,11 @@ public class MyListener extends ListenerAdapter {
 //a way to specify wether we are geting a file from a search or getting a file from a download
         if (event.getUser().getNick().equals("SearchOok")) {
             try {
-                event.acceptAndTransfer(new File("Files/SearchResults/" + event.getSafeFilename()));
+                
+                String fileName=event.getSafeFilename();
+                
+                event.acceptAndTransfer(new File(Main.SEARCH_FILE_DIR+fileName));
+                Unzipper.unzip(Main.SEARCH_FILE_DIR+fileName, Main.BOOK_FILE_DIR+fileName);
             } catch (IOException ex) {
                 Logger.getLogger(MyListener.class.getName()).log(Level.SEVERE, null, ex);
             }
