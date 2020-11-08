@@ -1,7 +1,0 @@
-Search results from SearchBot v3.00.05 by Ook, searching dll written by Ook, Based on Searchbot v2.22 by Dukelupus
-Searched 21 lists for "Vermintide" , found 1 matches. Enjoy!
-This list includes results from ALL the lists SearchBot v3.00.05 currently has, some of these servers may be offline.
-Always check to be sure the server you want to make a request from is actually in the channel, otherwise your request will have no effect.
-For easier searching, use sbClient script (also very fast local searches). You can get that script by typing @sbClient in the channel.
-
-!phoomphy WFRP - Novel - Vermintide.pdf     ::INFO:: 886.32 KiB

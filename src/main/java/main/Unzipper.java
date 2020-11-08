@@ -23,7 +23,6 @@ public class Unzipper {
             ZipFile zipFile = new ZipFile(source);
             zipFile.extractAll(dest);
         } catch (ZipException ex) {
-            Logger.getLogger(ArchiveHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

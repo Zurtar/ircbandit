@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static main.InputListener.input;
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.Event;
@@ -21,7 +22,6 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.ServerResponseEvent;
 import org.pircbotx.hooks.types.GenericMessageEvent;
 
-
 public class MyListener extends ListenerAdapter {
 
     @Override
@@ -32,16 +32,29 @@ public class MyListener extends ListenerAdapter {
 
 //TODO: Right now it treats every file transfer as a search transfer need to have 
 //a way to specify wether we are geting a file from a search or getting a file from a download
-        if (event.getUser().getNick().equals("SearchOok")) {
+        String nick = event.getUser().getNick();
+
+        //SEARCH DOWNLOAD CASE
+        if (nick.equals("SearchOok")) {
             try {
+                String fileName = event.getSafeFilename();
+                File destFile = new File(Main.SEARCH_FILE_DIR + fileName);
+
+                event.acceptAndTransfer(destFile);
+                Unzipper.unzip(destFile.getPath(), Main.SEARCH_FILE_DIR + fileName);
+                destFile.delete();
                 
-                String fileName=event.getSafeFilename();
                 
-                event.acceptAndTransfer(new File(Main.SEARCH_FILE_DIR+fileName));
-                Unzipper.unzip(Main.SEARCH_FILE_DIR+fileName, Main.BOOK_FILE_DIR+fileName);
             } catch (IOException ex) {
                 Logger.getLogger(MyListener.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            return;
+        }
+
+        //BOOK DOWNLOAD CASE
+        if (nick.equals("000000000")) {
+
         }
     }
 

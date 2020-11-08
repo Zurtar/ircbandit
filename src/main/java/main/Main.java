@@ -16,8 +16,10 @@ public class Main {
 
     public static PircBotX bot;
     public static MyListener listener = new MyListener();
-    
-    final static String CHANNEL_NAME="#bookz";
+
+    final static String CHANNEL_NAME = "#bookz";
+    final static String SEARCH_FILE_DIR = "Files/SearchResults/";
+    final static String BOOK_FILE_DIR = "Files/Books/";
 
     public static void main(String[] args) throws Exception {
         //Configure what we want our bot to do
@@ -31,6 +33,7 @@ public class Main {
 
         //Create our bot with the configuration
         bot = new PircBotX(config);
+        
 
         //This method is stopping
         bot.startBot();
